@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root 'top#index'
   devise_for :users
   resources :topics
   # The priority is based upon order of creation: first created -> highest priority.
