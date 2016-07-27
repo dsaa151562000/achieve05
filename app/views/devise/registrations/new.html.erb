@@ -8,6 +8,11 @@
       <div class="field">
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
       </div>
+      
+      <!-- 名前入力用のフィールドを追加 -->
+      <div class="field">
+        <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
+      </div>
 
       <div class="field">
         <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
