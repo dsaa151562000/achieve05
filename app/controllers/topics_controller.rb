@@ -24,12 +24,14 @@ class TopicsController < ApplicationController
 
   # POST /topics
   # POST /topics.json
+
   def create
     #@topic = Topic.new(topic_params)
     @topic = current_user.topics.build(topic_params)
-
     respond_to do |format|
       if @topic.save
+        #redirect_to topics_path, notice: "ブログを作成しました！"
+        NoticeMailer.sendmail_topic(@topic).deliver
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else
