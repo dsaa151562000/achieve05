@@ -31,7 +31,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         #redirect_to topics_path, notice: "ブログを作成しました！"
-        NoticeMailer.sendmail_topic(@topic).deliver
+        NoticeMailer.sendmail_blog(@topic).deliver
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else
