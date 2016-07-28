@@ -28,6 +28,16 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'faker'
+
+gem 'therubyracer', platforms: :ruby
+gem 'rails_admin'
+gem 'cancan'
+
+gem 'pry'
+gem 'pry-remote'
+gem 'pry-nav'
+
+gem 'better_errors'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
