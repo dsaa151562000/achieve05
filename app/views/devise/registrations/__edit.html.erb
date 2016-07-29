@@ -1,0 +1,49 @@
+
+<h2>マイページ編集</h2>
+<div class="container">
+  <div class="wrapper">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_messages! %>
+
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+  </div>
+  
+    <!-- 名前入力用のフィールドを追加 -->
+  <div class="field">
+    <%= f.label :名前 %><br />
+    <%= f.text_field :name, class: "form-control" %>
+  </div
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :変更するパスワード %> <i>(変更する際はご入力ください)</i><br />
+    <%= f.password_field :password, autocomplete: "off" , class: "form-control"%>
+  </div>
+  <div class="field">
+    <%= f.label :変更するパスワード（確認） %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" , class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :現在のパスワード %> <i>(※必須)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" , class: "form-control"%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新する" , class: "btn btn-primary btn-block"  %>
+  </div>
+<% end %>
+
+
+<h3>アカウントを削除する</h3>
+
+<p> <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "削除して宜しいですか?" }, method: :delete , class: "btn btn-primary btn-block" %></p>
+
+<%= link_to "戻る", :back , class: "btn btn-primary btn-block" %>
+</div>
+</div>
