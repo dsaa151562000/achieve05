@@ -1,4 +1,7 @@
 ja:
+  unauthorized:
+    manage:
+     all: "アクセス権限がありません"
   admin:
     home:
       name: "ホーム"
@@ -127,3 +130,5 @@ ja:
         default_col_sep: ","
         col_sep: "区切り文字"
         col_sep_help: "空白の場合は'%{value}'区切りです" # value is default_col_sep
+        
+        
