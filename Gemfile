@@ -38,6 +38,10 @@ gem 'pry-remote'
 gem 'pry-nav'
 
 gem 'better_errors'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
