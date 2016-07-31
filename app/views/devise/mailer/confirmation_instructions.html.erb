@@ -1,7 +1,6 @@
 <p>Welcome <%= @email %>!</p>
 
 <p>You can confirm your account email through the link below:</p>
-
+<p><%= @token %></p>
 <p><a href="https://achieve05.herokuapp.com/users/confirmation?confirmation_token=<%= @token %>">アカウントを有効にする</a></p>
 <p><%= link_to 'アカウントを有効にする', confirmation_url(@resource, confirmation_token: @token) %></p>
-<p><%= @token %></p>
