@@ -9,6 +9,7 @@
       <h4><strong><%= topic.title %></strong></h4>
         <p><%= topic.content %></p>
         <em>投稿者:<%= topic.user.name %></em><br>
+        <span class="pro_img"><%= profile_img(topic.user) %><span>
         </div>
         <div class="panel-footer">
         <%= link_to '詳細', topic %>|
