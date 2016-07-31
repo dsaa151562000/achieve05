@@ -46,4 +46,6 @@ class User < ActiveRecord::Base
     SecureRandom.uuid
   end
   
+  mount_uploader :avatar, AvatarUploader
+  
 end
