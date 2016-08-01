@@ -6,7 +6,13 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :topics
+  resources :comments
+  resources :topics do
+    resources :comments
+    collection do
+      post :confirm
+    end
+  end
   
 
   # The priority is based upon order of creation: first created -> highest priority.

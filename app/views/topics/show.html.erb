@@ -14,16 +14,32 @@
   <%= @topic.content %>
 </p>
 
+<p class="right">
+        <strong>作成時間:</strong>
+        <%= @topic.created_at.strftime("%y/%m/%d %p %l:%M") %>
+ </p>
+
 <p>
   <strong>投稿者:</strong>
-  <%= @topic.user.name %>
+  <span class="pro_img"><%= profile_img(@topic.user) %><span><%= @topic.user.name %>
 </p>
 
+
+<p>コメント一覧</p>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
+    </div>
+    
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+
 </div>
 </div>
 
-<%= link_to '編集', edit_topic_path(@topic), class: "btn btn-primary btn-block" %> 
-<%= link_to '一覧へ戻る', topics_path , class: "btn btn-primary btn-block"%>
+
+    <% if current_user.id == @topic.user_id %>
+      <%= link_to '編集', edit_topic_path(@topic) ,class: "btn btn-primary btn-block" %> 
+    <% end %>
+    <%= link_to '一覧へ戻る',topics_path, class: "btn btn-primary btn-block" %>
 
 </div>
 </div>

@@ -6,7 +6,10 @@
     <% @topics.each do |topic| %>
     <div class="panel panel-default">
       <div class="panel-body">
-      <h4><strong><%= topic.title %></strong></h4>
+        <%= link_to topic_path(topic) do %>
+          <h4><strong><%= topic.title %></strong></h4>
+        <% end %>
+      
         <p><%= topic.content %></p>
         <em>投稿者:<%= topic.user.name %></em><br>
         <span class="pro_img"><%= profile_img(topic.user) %><span>
