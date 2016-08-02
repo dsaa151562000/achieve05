@@ -1,5 +1,21 @@
 class UsersController < ApplicationController
- def index
+ before_action :authenticate_user!
+  
+  def index
     @users = User.all
   end
+  
+  def show
+    @user = User.find(params[:id])
+    @followed_users= current_user.followed_users
+    @followers=current_user.followers
+  end
+
+  def show_user
+    @user = User.find(params[:id])
+    @followed_users= current_user.followed_users  
+    #binding.pry
+    @followers=current_user.followers
+  end
+  
 end

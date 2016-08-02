@@ -15,9 +15,11 @@
         <span class="pro_img"><%= profile_img(topic.user) %><span>
         </div>
         <div class="panel-footer">
-        <%= link_to '詳細', topic %>|
-       <%= link_to '編集', edit_topic_path(topic) %>|
+        <%= link_to '詳細', topic %>
+        <% if topic.user.id == current_user.id %>
+        |<%= link_to '編集', edit_topic_path(topic) %>|
        <%= link_to '削除', topic, method: :delete, data: { confirm: 'Are you sure?' } %>
+       <% end %>
        </div>
        
       </div>

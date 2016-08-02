@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'relationships/create'
 
-  get 'relationships/destroy'
-
-  resources :users, only: [:index]
+  resources :users, only: [:index ]do
+   member do
+    get :show_user;    
+   end
+  end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'top#index'
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     end
   end
   
+
   resources :relationships, only: [:create, :destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.

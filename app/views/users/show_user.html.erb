@@ -1,0 +1,23 @@
+<div class="container">
+<div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+<p id="notice"><%= notice %></p>
+
+  <strong>お名前:</strong>
+ <p> <%= @user.name %></p>
+  <strong>メールアドレス:</strong>
+ <p> <%= @user.email %></p>
+ <p> <%= profile_img(@user) if profile_img(@user) %></p>
+ 
+ <p>フォローしているユーザー</p>
+ <% @followed_users.each do |followed_users| %>
+ <%= followed_users.name %>
+ <p> <%= profile_img(followed_users) if profile_img(followed_users) %></p>
+ <% end %>
+ 
+  <p>フォローされているユーザー</p>
+ <% @followers.each do |followers| %>
+ <%= followers.name %>
+ <p> <%= profile_img(followers) if profile_img(followers) %></p>
+ <% end %>
+</div>
+</div>
