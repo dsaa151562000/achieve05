@@ -19,6 +19,20 @@ class User < ActiveRecord::Base
   #「自分」と「自分”を”フォローしている人」の関係性を「followers」
   has_many :followers, through: :reverse_relationships, source: :follower
   
+  #指定のユーザをフォローする
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+  
+  #フォローしているかどうかを確認する
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+  
+  #指定のユーザのフォローを解除する
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
 
   
    def self.find_for_facebook_oauth(auth, signed_in_resource=nil)

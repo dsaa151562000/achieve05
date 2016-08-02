@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   resources :users, only: [:index]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
