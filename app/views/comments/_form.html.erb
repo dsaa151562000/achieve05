@@ -6,6 +6,10 @@
     <%= f.text_field :content, placeholder: "内容", class: "form-control"  %>
   </div>
   <div class="actions ">
+    <% if @edit %>
+    <%= f.submit  "更新する", class: "btn btn-primary btn-block"%>
+    <% else %>
     <%= f.submit  "投稿する", class: "btn btn-primary btn-block"%>
+    <% end %>
   </div>
 <% end %>

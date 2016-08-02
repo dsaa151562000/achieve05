@@ -1,0 +1,8 @@
+<h1>Editing Comment</h1>
+
+<div class="panel panel-default">
+<%= render partial:'comments/form',locals: { comment: @comment} %>
+</div>
+
+<%= link_to '詳細', topic_comment_path(@comment.topic,@comment) %> |
+<%= link_to 'コメント一覧へ', topic_path(@comment.topic) %>
