@@ -10,6 +10,17 @@ class User < ActiveRecord::Base
   # CommentモデルのAssociationを設定
   has_many :comments, dependent: :destroy
   
+  # RelationshipモデルとAssociationを設定
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  
+  #「自分」と「自分”が”フォローしている人」の1対多の関係性を「followed_users」
+  has_many :followed_users, through: :relationships, source: :followed
+  #「自分」と「自分”を”フォローしている人」の関係性を「followers」
+  has_many :followers, through: :reverse_relationships, source: :follower
+  
+
+  
    def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
