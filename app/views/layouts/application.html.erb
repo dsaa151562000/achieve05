@@ -13,8 +13,9 @@
       <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  class="header_text">Dropdown <span class="caret"></span></a>
       <ul class="dropdown-menu">
-      <li><%= link_to "トピック", topics_path %></li>
-      <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
+      <li><%= link_to "トピック", topics_path,class: "menu" %></li>
+      <li ><%= link_to "メッセージ", conversations_path,class: "menu" %></li>
+      <li ><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
       </ul>
       </li>
       
