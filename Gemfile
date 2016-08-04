@@ -45,6 +45,8 @@ gem 'omniauth-facebook'
 
 gem 'carrierwave'
 gem 'rmagick'
+
+gem 'pusher'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
