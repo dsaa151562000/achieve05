@@ -29,10 +29,20 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id)
   end
   
+  #フォローしている、フォローされている
+  def followed_follower(current_user,other_user)
+    relationships.where(followed_id: current_user.id).where(follower_id: other_user.id)
+  end
+  
+  # scope :followed_follower, -> (current_user,user_id) do
+  #   relationships.where(followed_id: current_user.id).where(follower_id: other_user.id)
+  # end
+
   #指定のユーザのフォローを解除する
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
   end
+  
 
   
    def self.find_for_facebook_oauth(auth, signed_in_resource=nil)

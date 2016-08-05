@@ -8,6 +8,10 @@
  <p> <%= @user.email %></p>
  <p> <%= profile_img(@user) if profile_img(@user) %></p>
  
+        <% if @flag && @flag2 %>
+        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%>
+        <% end %>
+ 
  <p>フォローしているユーザー</p>
  <% @followed_users.each do |followed_users| %>
  <%= followed_users.name %>

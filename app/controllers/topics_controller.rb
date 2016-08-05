@@ -6,6 +6,13 @@ class TopicsController < ApplicationController
   # GET /topics.json
   def index
     @topics = Topic.all
+    
+    #自分がフォローしている人を取得
+    @my_followed_users2 =current_user.followed_users
+    #自分をフォローしている人を取得
+    @my_followers2=current_user.followers
+    
+    
   end
 
   # GET /topics/1
