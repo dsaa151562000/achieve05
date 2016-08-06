@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
+  #コメント作成後にPusher送信処理を実行する。
+  after_action :sending_pusher, only: [:create]
   
   # GET /comments/1/edit
   def edit
@@ -24,6 +26,9 @@ class CommentsController < ApplicationController
     # ログインユーザーに紐付けてインスタンス生成するためbuildメソッドを使用します。
     @comment = current_user.comments.build(comment_params)
     @topic = @comment.topic
+    #コメント投稿時にNotificationを作成
+    @notification = @comment.notifications.build(recipient_id: @topic.user_id, sender_id: current_user.id)
+    #buildメソッドを使用して@commentに紐付けたインスタンスは@comment.save時にセットで保存されます。
     
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
@@ -58,6 +63,10 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+    
+    def sending_pusher
+      Notification.sending_pusher(@notification.recipient_id)
     end
     
 end

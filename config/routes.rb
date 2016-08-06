@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'notifications/index'
+
   resources :users, only: [:index ]do
    resources :notifications, only: [:index]
    member do
