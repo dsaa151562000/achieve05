@@ -1,12 +1,15 @@
-<div id="follow_form_<%= user.id %>">
+<div id="follow_form_<%= user.id %>" class="follow_form">
   <% unless current_user.following?(user) %>
     <%= form_for(current_user.relationships.build(followed_id: user.id), remote: true) do |f| %>
       <%= f.hidden_field :followed_id %>
       <%= f.submit "フォロー", class: "btn btn-large btn-primary" %>
     <% end %>
   <% else %>
+        <% if @flag && @flag2 %>
+        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%>
+        <% end %>
     <%= form_for(current_user.relationships.find_by(followed_id: user.id), html: { method: :delete }, remote: true) do |f| %>
-      <%= f.submit "つながりを解除", class: "btn btn-large" %>
+      <%= f.submit "フォローを解除", class: "btn btn-large" %>
     <% end %>
   <% end %>
 </div>

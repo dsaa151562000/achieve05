@@ -8,7 +8,7 @@ class Notification < ActiveRecord::Base
  belongs_to :comment, class_name: "Comment", foreign_key: :comment_id
 
  scope :read, -> { where(read: true) }
- scope :unread, -> { where(read: false) }
+ scope :unread, -> { where(read: nil) }
  scope :unread_count, -> (user_id) { where(recipient_id: user_id).unread.count }
 
  def self.sending_pusher(channel_user_id)

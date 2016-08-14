@@ -47,4 +47,13 @@ class UsersController < ApplicationController
 
   end
   
+  
+  def following
+    @users = current_user.followed_users 
+  end
+  
+  def followers
+    @users = current_user.followers 
+  end
+  
 end

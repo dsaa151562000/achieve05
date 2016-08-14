@@ -1,48 +1,44 @@
 
   <p class="flash"><%= notice %><%= alert %></p>
 
+<div class="container">
+  <div class="row">
 
-  <section class="about">
-    <h1>About Achieve</h1>
-    <p>
-       Achieveを作り終えることで、SecondTeamに参加するための力を身につけることができます。
-    </p>
-    <p>
-       Acheiveを一言で表すと、タスク管理アプリです。<br>
-       チームメンバーが、今どのようなタスクを行っているかリアルタイム
-    </p>
-  </section>
-   <section class="function container-fluid">
-    <div class="row">
-    <h2>Function</h2>
-      <div class="function-images">
-        <div class="col-md-3 col-sm-6">
-          <div class="function-image">
-            <img src="<%= asset_path "key.png" %>">
-            <p>ログイン機能</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="function-image">
-            <img src="<%= asset_path "mails.png" %>">
-            <p>メール送信機能</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="function-image">
-            <img src="<%= asset_path "girls.png" %>">
-            <p>友達つながり機能</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="function-image">
-            <img src="<%= asset_path "comment.png" %>">
-            <p>コメント投稿機能</p>
-          </div>
-        </div>
-      </div>
+<div class="col-md-5 col-sm-5 col-xs-5 top_face_intro " >
+    <div class ="center _5iyx">facebookを使うと、友達や同僚、同級生、仲間たちとつながりを深められます。ケータイ、スマートフォンからもアクセスできます。</div>
+    <div class="top_image" >
+        <%= link_to image_tag('top.png', { :border => '0', :alt => 'facebook'}), topics_path %>
     </div>
-  </section>
-  <footer>
-    運営会社タイムシフト株式会社</p><p>© 2015-2016 Copyright TimeShift Corp.
-  </footer>
+</div>
+    
+    
+<% unless user_signed_in? %>
+<div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-1" >
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_messages! %>
+      <h1 class="_52lq">アカウント登録</h1>
+      <div class="field">
+        <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
+      </div><br>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
+      </div><br>
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
+      </div><br>
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "パスワード（確認）" %>
+      </div><br>
+      <div class="actions">
+        <%= f.submit "アカウント登録", class: "btn btn-success btn-block" %>
+      </div>
+    <% end %><br>
+
+  <a class="btn btn-social btn-facebook text_white" href="/users/auth/facebook"><i class="fa fa-facebook"></i>facebook認証</a>
+  <a class="btn btn-social btn-twitter text_white" href="/users/auth/twitter"><i class="fa fa-twitter"></i>twitter認証</a>
+<% end %>
+</div>
+
+
+</div>
+</div>

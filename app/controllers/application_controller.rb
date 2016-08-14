@@ -8,10 +8,12 @@ class ApplicationController < ActionController::Base
   before_action :current_notifications
   #ヘッダー通知用
   def current_notifications
-  if(signed_in?)
-   @notifications = Notification.where(recipient_id: current_user.id).order(created_at: :desc).includes({comment: [:topic]})
-  end
-   @notifications_count = Notification.where(recipient_id: current_user).order(created_at: :desc).unread.count
+    if(signed_in?)
+      @notifications = Notification.where(recipient_id: current_user.id).order(created_at: :desc).includes({comment: [:topic]})
+    end
+  
+    @notifications_count = Notification.where(recipient_id: current_user).order(created_at: :desc).unread.count
+   #binding.pry
   end
   
   rescue_from CanCan::AccessDenied do |exception|
@@ -19,6 +21,10 @@ class ApplicationController < ActionController::Base
   end
 
   PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
+  
+  def after_sign_in_path_for(resource)
+    topics_path
+  end
 
   private
 

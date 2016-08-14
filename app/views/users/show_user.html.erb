@@ -1,27 +1,43 @@
 <div class="container">
-<div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+<div class="wrapper col-md-10 col-md-offset-2 col-sm-10">
 <p id="notice"><%= notice %></p>
 
-  <strong>お名前:</strong>
- <p> <%= @user.name %></p>
-  <strong>メールアドレス:</strong>
- <p> <%= @user.email %></p>
- <p> <%= profile_img(@user) if profile_img(@user) %></p>
+<div class="panel panel-default">
+    <% if @flag %>
+      <div class="panel-heading">
+        <div class="font-size20"> あなたは<%= @user.name %>さんをフォロー中！</div>
+      </div>
+    <% end %>
+
+  　　<% if @flag && @flag2 %>
+    <div class="panel-body">
+  <i class="fa fa-comments-o fa-lg fa-black" aria-hidden="true"><span class="remark">
+   <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', :style=>"color:#000;"%>
+  </span></i>
+  </div>
+    <%end%>
+   <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item"><p class="display-inline-block"> <%= profile_img(@user) if profile_img(@user) %></p><p class="display-inline-block margin-left10"> <%= @user.name %></p> </li>
+    <li class="list-group-item"><%= @user.email %></li>
+  </ul>
+</div>
+
+
+<% if @followed_users.present? %>
  
-        <% if @flag && @flag2 %>
-        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%>
+        <div class="panel panel-default">
+         <div class="panel-heading">
+         <p><%= @user.name %>さんがフォローしているユーザー</p>
+         </div>
+        <% @followed_users.each do |followed_users| %>
+        <div class="panel-body">
+         <p class="width_48"><%= profile_img(followed_users) if profile_img(followed_users) %></p><span class="margin-left10"><%= followed_users.name %></span>
+        </div>
         <% end %>
- 
- <p>フォローしているユーザー</p>
- <% @followed_users.each do |followed_users| %>
- <%= followed_users.name %>
- <p> <%= profile_img(followed_users) if profile_img(followed_users) %></p>
- <% end %>
- 
-  <p>フォローされているユーザー</p>
- <% @followers.each do |followers| %>
- <%= followers.name %>
- <p> <%= profile_img(followers) if profile_img(followers) %></p>
- <% end %>
+        </div>
+
+<% end %>
+
 </div>
 </div>

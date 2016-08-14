@@ -1,33 +1,13 @@
-<div class="container">
-  <h2>ユーザー</h2>
+<div class="flyout">
+  <div class="friends" >ユーザー   <%= link_to "あなたをフォローしているユーザー", followers_user_path(current_user.id), class: 'btn btn-default btn-sm btn-success'  %></div>
+
   
  <% @users.each do |user| %>
  <% if user.id != current_user.id %>
-      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+      <div class="_4l9b ">
         <a href="/users/<%= user.id %>/show_user">
         <%= profile_img(user) %>
-         <%= user.id %>
          <%= user.name %></a>
-        <%= user.email %>
-        
-           <!--自分がフォローしている人を取得-->
-         <% @my_followed_users.each do |my_followed_id| %>
-                <%if my_followed_id == user.id%>
-                 <!--自分をフォローしている人を取得-->
-                 <% @my_followers.each do |my_follower_id| %>
-                     <%if my_follower_id == user.id%>
-                   <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-                     <% end %>
-                 <% end %>
-                <% end  %>
-        <% end %>
-        
-
-
-
-
- 
-
         
         <%= render 'follow_form', user: user %>
 

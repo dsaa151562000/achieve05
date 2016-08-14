@@ -1,0 +1,11 @@
+<div class="flyout">
+  <div class="friends" >フォロワー</div>
+  <% @users.each do |user| %>
+         <div class="_4l9b ">
+         <a href="/users/<%= user.id %>/show_user">
+        <%= profile_img(user) %><%= user.name %>
+        </a>
+      </div>
+  <% end %>
+  <%= link_to '戻る', :back %>
+</div>

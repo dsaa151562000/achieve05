@@ -4,13 +4,18 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index ]do
    resources :notifications, only: [:index]
+   #collection(集合)はidなし、member(個別)はidあり」
    member do
-    get :show_user;    
+    get :show_user;
+    get :following,:followers;
    end
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   root 'top#index'
+  post '/' => 'top#index', as: 'top'
+  
   devise_for :users, controllers: {
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"

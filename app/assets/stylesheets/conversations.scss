@@ -1,3 +1,42 @@
 // Place all the styles related to the Conversations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper{
+    margin-top: 80px;
+}
+
+.list-group {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+
+.list-group a:visited {
+    color: #000;
+}
+
+.list-group-item {
+    text-align: left;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.title{
+    font-size: 20px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.width_48{
+    width: 48px;
+    display: inline-block;
+}
+
+.target_name{
+    font-size: 18px;
+    margin-left: 10px;
+}

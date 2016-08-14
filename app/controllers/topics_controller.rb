@@ -44,7 +44,7 @@ class TopicsController < ApplicationController
       if @topic.save
         #redirect_to topics_path, notice: "ブログを作成しました！"
         NoticeMailer.sendmail_blog(@topic).deliver
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to @topic, notice: '新しいトピックを作成しました。' }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        format.html { redirect_to @topic, notice: 'トピックを更新しました。' }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit }
@@ -72,7 +72,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
+      format.html { redirect_to topics_url, notice: 'トピックを削除しました。' }
       format.json { head :no_content }
     end
   end

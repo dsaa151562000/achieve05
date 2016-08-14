@@ -1,13 +1,16 @@
 <div class="container">
-  <h2>お知らせ</h2>
+  <h2 class="notifications_title">トピックに対するコメント</h2>
   <hr>
   <% @notifications.each do |notification| %>
     <ul class="notification-list">
       <li>
         <span class="label label-pill label-default"><%= display_read_status(notification.read) %></span>
-        <p>
+        <p class="notifications text_color_black">
+          <a href="/topics/<%= notification.comment.topic.id %>" style="color: black;">
+          <div class="comment_prof_img"><%= profile_img(notification.comment.user) %></div>
           <%= receive_user(notification) %>さんが
-          <small class="dropdown">ブログ「<%= notification.comment.topic.title %>」のコメントしました。</small>
+          <small class="dropdown">トピック「<%= notification.comment.topic.title %>」にコメントしました。</small>
+        　</a>
         </p>
         <p class="palette-paragraph text-right">
           <small class="dropdown">

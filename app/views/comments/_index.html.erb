@@ -1,10 +1,11 @@
 <ul>
   <% comments.each do |comment| %>
     <% unless comment.id.nil? %>
-      <li>
-        <p class="left"><%= comment.user.name %>さんがコメントしました。</p>
-        <p class="left"><%= comment.content %></p>
-        <% if current_user.id == comment.user.id %>
+      <li class="commnet_user">
+        <p class="left"><%= profile_img(comment.user) %></p>
+        <p class="left"><%= comment.user.name %></p>
+        <p class="margin-top-10"><%= comment.content %></p>
+         <% if current_user.id == comment.user.id %>
           <p class="right">
             <%= link_to '編集する', edit_topic_comment_path(topic, comment) %>
             <%= link_to '削除する', topic_comment_path(topic, comment), method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>

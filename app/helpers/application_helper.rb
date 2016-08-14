@@ -5,7 +5,7 @@ module ApplicationHelper
     unless user.provider.blank?
       img_url = user.image_url
     else
-      img_url = 'no_image.png'
+      img_url = 'http://design-ec.com/d/e_others_50/l_e_others_500.png'
     end
     image_tag(img_url, alt: user.name)
   end

@@ -1,6 +1,70 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-img {
-    max-width: 10%;
+.flyout {
+    background: #fff;
+    border-top: 1px solid #bfbfbf;
+    left: 0;
+    margin: 44px auto 0;
+    pointer-events: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 12;
+}
+
+.friends {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+    font-weight: bold;
+    padding: 8px 12px;
+   border-bottom: 1px #ddd solid;
+}
+
+._4l9b {
+    background-color: #fff;
+    padding: 10px 10px 10px 10px;
+    text-align: left;
+    border-bottom: 1px #ddd solid;
+}
+
+._4l9b a{
+    color: #000;
+}
+
+._4l9b img{
+    width: 48px;
+}
+.follow_form{
+   display: inline-block; 
+   float: right;
+}
+
+.display-inline-block{
+   display: inline-block;  
+}
+
+.display-inline-block img{
+ width: 40px;
+}
+
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+
+.margin-left10{
+        margin-left: 10px;
+}
+
+.form-group img{
+    width: 48px;
+}
+
+.font-size20{
+    font-size: 20px;
 }

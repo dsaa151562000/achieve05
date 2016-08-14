@@ -1,3 +1,24 @@
 // Place all the styles related to the Notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.notifications a{
+    color: #000;
+}
+
+.notifications a:visited {
+    color: #000;
+}
+
+.notifications_title{
+    margin-top: 10px;
+    font-size:20px;
+}
+
+.comment_prof_img{
+    width: 40px;
+    display: inline-block;
+}
+
+.dropdown{
+    color: block;
+}

@@ -1,14 +1,14 @@
-<% if @over_ten %>
-  <%= link_to '以前のメッセージ', '?m=all' %>
-<% end %>
 
-<div class="ui segment">
+ 
+<ul class="list-group lg-margin-top60">
+  <div class="msse_img"><%= profile_img(@target) %><span class="target_name"><%= @target.name %>さんとのメッセージルーム</span></div>
   <% @messages.each do |message| %>
     <% if message.body %>
       <% user = User.find(message.user_id) %>
-      <div class="item">
+      <li class="list-group-item">
         <div class="content">
-          <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
+          <%= profile_img(user) %>
+          <div ><strong><%= user.name %></strong> <%= message.message_time %></div>
           <div class="list">
             <div class="item">
               <i class="right triangle icon"></i>
@@ -16,12 +16,17 @@
             </div>
           </div>
         </div>
-      </div>
+      </li>
     <% end %>
   <% end %>
-</div>
+  </ul>
 
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+
+<% if @over_ten %>
+  <%= link_to '以前のメッセージ', '?m=all' %>
+<% end %>
+
+<%= form_for [@conversation, @message], html: {class: "reply form"} do |f| %>
   <div class="field">
     <%= f.text_area :body, class: "form-control" %>
   </div>

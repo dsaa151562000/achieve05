@@ -4,35 +4,26 @@
 
 <div class="panel panel-default">
 <div class="panel-body">
+  
 <p>
-  <strong>タイトル:</strong>
-  <%= @topic.title %>
+  <span class="pro_img"><%= profile_img(@topic.user) %></span><span class="margin-left10"><%= @topic.user.name %></span>
 </p>
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item"> <p ><%= @topic.title %></p><p ><%= @topic.created_at.strftime("%m/%d %p %l:%M") %> </p></li>
+    <li class="list-group-item"><%= @topic.content %> </li>
+  </ul>
 
-<p>
-  <strong>トピック内容:</strong>
-  <%= @topic.content %>
-</p>
-
-<p class="right">
-        <strong>作成時間:</strong>
-        <%= @topic.created_at.strftime("%y/%m/%d %p %l:%M") %>
- </p>
-
-<p>
-  <strong>投稿者:</strong>
-  <span class="pro_img"><%= profile_img(@topic.user) %><span><%= @topic.user.name %>
-</p>
-
-
+</div>
+<div class="panel-footer">
 <p>コメント一覧</p>
     <div id="comments_area">
       <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
     </div>
     
     <%= render partial: 'comments/form', locals: { comment: @comment } %>
-
 </div>
+
 </div>
 
 

@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   def index
   #会話にひもづくメッセージを取得する
     @messages = @conversation.messages
+    @target = @conversation.target_user(current_user)
     
     #もしメッセージの数が10よりも大きければ...
     if @messages.length > 10
