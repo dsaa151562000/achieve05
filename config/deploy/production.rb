@@ -59,7 +59,7 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
-server '52.197.181.67', user: 'app', roles: %w{app db web}
+server '52.192.11.130', user: 'app', roles: %w{app db web}
 #set :ssh_options, keys: '/home/ubuntu/.ssh/id_rsa'
 set :ssh_options, keys: "~/.ssh/id_rsa"
 #set :ssh_options, keys: "facebook-key.pem"
