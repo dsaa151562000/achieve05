@@ -55,6 +55,8 @@ gem 'unicorn'
 gem 'therubyracer', platforms: :ruby
 
 gem 'fog'
+
+gem 'rambulance'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
