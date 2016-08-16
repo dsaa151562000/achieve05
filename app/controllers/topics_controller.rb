@@ -80,7 +80,7 @@ class TopicsController < ApplicationController
       format.html { redirect_to topics_path(@topic), notice: 'トピックを削除しました。' }
       format.json { head :no_content }
     else
-      format.html { redirect_to '/501.html' }
+      format.html { redirect_to '/assets/501.html' }
     end
   end
 
