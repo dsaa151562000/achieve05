@@ -70,11 +70,20 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   # DELETE /topics/1.json
   def destroy
-    @topic.destroy
-    respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'トピックを削除しました。' }
+
+    @user_id= @topic.user.id
+    @topic2 = current_user
+    respond_to do |format| 
+    if @topic2.id == @user_id
+    #binding.pry
+       @topic.destroy
+      format.html { redirect_to topics_path(@topic), notice: 'トピックを削除しました。' }
       format.json { head :no_content }
+    else
+      format.html { redirect_to '/501.html' }
     end
+  end
+
   end
 
   private
