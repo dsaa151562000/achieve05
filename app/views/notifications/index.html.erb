@@ -1,7 +1,10 @@
 <div class="container">
   <h2 class="notifications_title">トピックに対するコメント</h2>
   <hr>
+  
+  <!--roop start-->
   <% @notifications.each do |notification| %>
+   <% unless notification.comment.user.id == current_user.id %>
     <ul class="notification-list">
       <li>
         <span class="label label-pill label-default"><%= display_read_status(notification.read) %></span>
@@ -10,7 +13,8 @@
           <div class="comment_prof_img"><%= profile_img(notification.comment.user) %></div>
           <%= receive_user(notification) %>さんが
           <small class="dropdown">トピック「<%= notification.comment.topic.title %>」にコメントしました。</small>
-        　</a>
+        　<p class="margin_0">「 <%= notification.comment.content %>」</p></a>
+        　
         </p>
         <p class="palette-paragraph text-right">
           <small class="dropdown">
@@ -20,5 +24,8 @@
       </li>
       <hr>
     </ul>
+   <% end %>
   <% end %>
+ <!--roop end-->
+ 
 </div>
