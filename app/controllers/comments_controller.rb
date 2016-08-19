@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
     @notification = @comment.notifications.build(recipient_id: @topic.user_id, sender_id: current_user.id)
     #buildメソッドを使用して@commentに紐付けたインスタンスは@comment.save時にセットで保存されます。
     
+    
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
       if @comment.save
