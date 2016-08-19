@@ -8,11 +8,14 @@ class ApplicationController < ActionController::Base
   before_action :current_notifications
   #ヘッダー通知用
   def current_notifications
-    if(signed_in?)
-      @notifications = Notification.where(recipient_id: current_user.id).order(created_at: :desc).includes({comment: [:topic]})
+    if(signed_in?)#もしサインインしていたなら
+     @notifications = Notification.where(recipient_id: current_user.id).order(created_at: :desc).includes({comment: [:topic]})
     end
   
     @notifications_count = Notification.where(recipient_id: current_user).order(created_at: :desc).unread.count
+    #@notifications_count = Notification.where(recipient_id: current_user).where.not(sender_id: current_user).order(created_at: :desc).unread.count
+    
+    #.where.not(user_id: current_user.id)
    #binding.pry
   end
   
