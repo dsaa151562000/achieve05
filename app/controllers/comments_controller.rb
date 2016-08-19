@@ -27,9 +27,14 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     @topic = @comment.topic
     #コメント投稿時にNotificationを作成
-    @notification = @comment.notifications.build(recipient_id: @topic.user_id, sender_id: current_user.id)
+    #@notification = @comment.notifications.build(recipient_id: @topic.user_id, sender_id: current_user.id)
     #buildメソッドを使用して@commentに紐付けたインスタンスは@comment.save時にセットで保存されます。
     
+    if @topic.user_id == current_user.id
+     @notification = @comment.notifications.build(recipient_id: @topic.user_id, sender_id: current_user.id, read: true)   
+    else
+     @notification = @comment.notifications.build(recipient_id: @topic.user_id, sender_id: current_user.id)  
+    end
     
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
