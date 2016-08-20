@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'notifications/index'
+
+
+
 
   resources :users, only: [:index ]do
    resources :notifications, only: [:index]
@@ -15,6 +17,10 @@ Rails.application.routes.draw do
   
   root 'top#index'
   post '/' => 'top#index', as: 'top'
+  get 'contact/new'
+  get 'contact/confirm'
+  get 'contact/thanks'
+  get 'notifications/index'
   
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -36,7 +42,7 @@ Rails.application.routes.draw do
     resources :messages
   end
   
-  gem 'fog'
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

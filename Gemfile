@@ -52,7 +52,7 @@ gem 'pusher'
 gem 'jquery-turbolinks'
 
 gem 'unicorn'
-gem 'therubyracer', platforms: :ruby
+#gem 'therubyracer', platforms: :ruby
 
 gem 'fog'
 
