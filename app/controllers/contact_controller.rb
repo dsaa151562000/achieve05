@@ -4,8 +4,15 @@ class ContactController < ApplicationController
   end
 
   def new
-    @contact = Contact.new
+    #@contact = Contact.new
     #binding.pry 空の１行が表示
+    
+     
+    if params[:back]
+      @contact = Contact.new(contact_params)
+    else
+      @contact = Contact.new
+    end
   end
   
     def confirm
@@ -20,7 +27,17 @@ class ContactController < ApplicationController
     end
   end
 
+  #擬似的なUser2データ構造体を作る
+	User2 = Struct.new(:name, :email)
+	
   def thanks
+    @contact = Contact.create(contact_params)
+    
+    #User2のインスタンスを作成する
+    user = User2.new("name", "suzuki02yo@gmail.com")
+  	# deliverメソッドを使って、メールを送信する
+    ContactMailer.contact_email(user, @contact).deliver
+    
   end
   
   private

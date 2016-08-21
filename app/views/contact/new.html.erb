@@ -1,2 +1,43 @@
-<h1>Contact#new</h1>
-<p>Find me in app/views/contact/new.html.erb</p>
+
+<h1 class="margin_top_60">お問い合わせフォーム</h1>
+
+
+<%= form_for @contact, :url => contact_confirm_path do |f| %>
+<% if@contact.errors.any? %>
+<div>
+    <h2><%= @contact.errors.count %></h2>
+    <ul>
+    <% @contact.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+    <% end %>
+    </ul>
+</div>
+
+<% end %>
+
+  
+ <table class="table">
+    <tr>
+      <th>名前<span class="text-danger">（必須）</span></th>
+      
+
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス<span class="text-danger">（必須）</span></th>
+      
+
+      <td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
+      <th>お問い合わせ内容</th>
+
+ 
+      
+      <td><%= f.text_area :message %><span class="text-danger">（必須）</span></td>
+    </tr>
+  </table>
+  
+  <%= f.submit '確認', class: 'btn btn-primary' %>
+
+<% end %>

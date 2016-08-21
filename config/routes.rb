@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   root 'top#index'
   post '/' => 'top#index', as: 'top'
   get 'contact/new'
-  get 'contact/confirm'
-  get 'contact/thanks'
+  post 'contact/confirm'
+  post 'contact/thanks'
   get 'notifications/index'
   
   devise_for :users, controllers: {
